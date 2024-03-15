@@ -1,0 +1,140 @@
+M SABRI NURZAMAN
+20230040147
+TIF23
+
+1 1a. Buatlah inputan nilai, jika nilainya lebih dari 75, maka lulus
+1b. Buatlah inputan tahun lahir
+jika lahir tahun 2000 keatas, maka kalian generasi Gen-Z
+
+input Nilai dan Kelulusan
+
+nilai = int(input("Masukkan nilai: "))
+
+if nilai > 75:
+  print("Selamat! Anda Lulus!")
+else:
+  print("Mohon maaf, Anda Tidak Lulus.")
+
+1b. Input Tahun Lahir dan Generasi 
+
+tahun_lahir = int(input("Masukkan tahun lahir: "))
+
+if tahun_lahir >= 2000:
+  print("Anda termasuk generasi Gen-Z.")
+else:
+  print("Anda bukan termasuk generasi Gen-Z.")
+
+2 2. Buatlah konversi nilai dengan kriteria
+<50 E
+50-60 D
+60-70 C
+70-80 B
+selebihnya A
+
+nilai = int(input("Masukkan nilai: "))
+
+if nilai < 50:
+  huruf_mutu = "E"
+elif nilai < 60:
+  huruf_mutu = "D"
+elif nilai < 70:
+  huruf_mutu = "C"
+elif nilai < 80:
+  huruf_mutu = "B"
+else:
+  huruf_mutu = "A"
+
+print(f"Nilai Anda: {nilai}, Huruf Mutu: {huruf_mutu}")
+
+3 . Buatlah Perhitungan IPK untuk semester ini berdasarkan nilai yang di input
+Mata kuliah semster ini adalah Algoritma, Perancangan Objek, Kalkulus, Etika Profesi, Databases, dan English
+
+# Daftar mata kuliah
+mata_kuliah = ["Algoritma", "Perancangan Objek", "Kalkulus", "Etika Profesi", "Databases", "English"]
+
+# Input nilai
+nilai = {}
+for matkul in mata_kuliah:
+  nilai[matkul] = int(input(f"Masukkan nilai {matkul}: "))
+
+# SKS setiap mata kuliah
+sks = {
+  "Algoritma": 3,
+  "Perancangan Objek": 3,
+  "Kalkulus": 4,
+  "Etika Profesi": 2,
+  "Databases": 3,
+  "English": 2,
+}
+
+# Hitung total SKS dan total nilai
+total_sks = 0
+total_nilai = 0
+for matkul in mata_kuliah:
+  total_sks += sks[matkul]
+  total_nilai += nilai[matkul] * sks[matkul]
+
+# Hitung IPK
+ipk = total_nilai / total_sks
+
+# Cetak hasil
+print(f"IPK Semester Ini: {ipk:.2f}")
+
+4 Buatlah form pendaftaran untuk masuk universitas
+Nama, Tempat lahir, Tanggal Lahir, Tahun lahir, 3 Nilai Mata Pelajaran (English, Mtk, Indonesia), Jenis Kelamin
+Dia akan disarankan ke Jurusan Teknik Informatika jika rata-rata nilainya >=80 dan jenis kelaminnya laki-laki
+Jurusan Sistem Informasi jika rata-rata nilainya >=80 dan jenis kelamin Perempuan
+Selebihnya disarankan masuk jurusan DKV
+Meskipun demikian, Mahasiswa yang diterima hanya yang dibawah umur 25
+
+# Daftar mata kuliah
+mata_kuliah = ["Bahasa Inggris", "Matematika", "Bahasa Indonesia"]
+
+# Input data diri
+nama = input("Masukkan nama lengkap: ")
+tempat_lahir = input("Masukkan tempat lahir: ")
+tanggal_lahir = input("Masukkan tanggal lahir (dd/mm/yyyy): ")
+tahun_lahir = int(input("Masukkan tahun lahir: "))
+jenis_kelamin = input("Masukkan jenis kelamin (Laki-laki/Perempuan): ")
+
+# Input nilai
+nilai = {}
+for matkul in mata_kuliah:
+  nilai[matkul] = int(input(f"Masukkan nilai {matkul}: "))
+
+# Hitung rata-rata nilai
+rata_rata = sum(nilai.values()) / len(nilai)
+
+# Saran jurusan
+saran_jurusan = "DKV"
+if rata_rata >= 80 and jenis_kelamin == "Laki-laki":
+  saran_jurusan = "Teknik Informatika"
+elif rata_rata >= 80 and jenis_kelamin == "Perempuan":
+  saran_jurusan = "Sistem Informasi"
+
+# Hitung usia
+usia = 2023 - tahun_lahir
+
+# Periksa persyaratan
+if usia <= 25:
+  persyaratan = "Memenuhi"
+else:
+  persyaratan = "Tidak Memenuhi"
+
+# Cetak hasil
+print(f"""
+Informasi Pendaftaran Universitas:
+
+Nama Lengkap: {nama}
+Tempat Lahir: {tempat_lahir}
+Tanggal Lahir: {tanggal_lahir}
+Jenis Kelamin: {jenis_kelamin}
+Nilai:
+  - Bahasa Inggris: {nilai['Bahasa Inggris']}
+  - Matematika: {nilai['Matematika']}
+  - Bahasa Indonesia: {nilai['Bahasa Indonesia']}
+Rata-rata Nilai: {rata_rata:.2f}
+Saran Jurusan: {saran_jurusan}
+Persyaratan Usia: {persyaratan}
+""")
+
